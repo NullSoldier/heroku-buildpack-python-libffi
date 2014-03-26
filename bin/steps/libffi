@@ -3,7 +3,7 @@
 # This script is invoked by [`bin/compile`](/).
 
 # The location of the pre-compiled libffi binary.
-VENDORED_LIBFFI="https://raw.githubusercontent.com/JohnTheodore/heroku-buildpack-python-libffi/master/libffi_linux_binaries/libffi-3.0.tgz"
+VENDORED_LIBFFI="https://s3-us-west-2.amazonaws.com/mfenniak-graphviz/libffi-3.0.tgz"
 VENDORED_PATH=/app/vendor/libffi-3.0
 
 # Syntax sugar.
@@ -16,8 +16,8 @@ cd "$VENDORED_PATH"
 
 # Download and extract libffi into target vendor directory.
 curl -s -L -o tmp-libffi.tar.gz $VENDORED_LIBFFI
-tar -zxvf libffi.tar.gz > /dev/null
-rm libffi.tar.gz
+tar -zxvf tmp-libffi.tar.gz > /dev/null
+rm tmp-libffi.tar.gz
 
 # Add libffi's to PKG_CONFIG_PATH
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$(pwd)/lib/pkgconfig/
