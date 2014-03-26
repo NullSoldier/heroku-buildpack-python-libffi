@@ -15,7 +15,7 @@ mkdir -p "$VENDORED_PATH"
 cd "$VENDORED_PATH"
 
 # Download and extract libffi into target vendor directory.
-curl -o tmp-libffi.tar.gz $VENDORED_LIBFFI
+curl -L -k -o tmp-libffi.tar.gz $VENDORED_LIBFFI
 tar -zxvf tmp-libffi.tar.gz > /dev/null
 rm tmp-libffi.tar.gz
 
