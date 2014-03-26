@@ -3,7 +3,7 @@
 # This script is invoked by [`bin/compile`](/).
 
 # The location of the pre-compiled libffi binary.
-VENDORED_LIBFFI="https://raw.githubusercontent.com/JohnTheodore/heroku-buildpack-python-libffi/master/libffi_linux_binaries/libffi-3.0.tgz"
+VENDORED_LIBFFI="https://github.com/JohnTheodore/heroku-buildpack-python-libffi/raw/master/libffi_linux_binaries/libffi-3.0.tgz"
 VENDORED_PATH=/app/vendor/libffi-3.0
 
 # Syntax sugar.
