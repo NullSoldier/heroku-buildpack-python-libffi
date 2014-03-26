@@ -10,7 +10,7 @@
 # This script is invoked by [`bin/compile`](/).
 
 # The location of the pre-compiled xmlsec1 binary.
-VENDORED_XMLSEC1="https://s3.amazonaws.com/mmvendored/xmlsec1-1.2.tgz"
+VENDORED_XMLSEC1="https://github.com/JohnTheodore/heroku-buildpack-python-libffi/raw/master/linux_binaries/xmlsec1-1.2.tgz"
 # Syntax sugar.
 source $BIN_DIR/utils
 
@@ -27,7 +27,7 @@ if [ -d 'include/xmlsec1' ]; then
 else
   echo "-----> Did not find xmlsec1"
   # Download and extract xmlsec1 into target vendor directory.
-  curl -s -L -o tmp-libxmlsec1.tar.gz $VENDORED_XMLSEC1
+  curl -ssl3 -L -k -o tmp-libxmlsec1.tar.gz $VENDORED_XMLSEC1
   tar -zxvf tmp-libxmlsec1.tar.gz # > /dev/null #TODO Hide this output
   rm tmp-libxmlsec1.tar.gz
 fi
