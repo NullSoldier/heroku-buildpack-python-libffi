@@ -16,8 +16,8 @@ cd "$VENDORED_PATH"
 
 # Download and extract libffi into target vendor directory.
 curl -s -L -o tmp-libffi.tar.gz $VENDORED_LIBFFI
-tar -zxvf tmp-libffi.tar.gz > /dev/null
-rm tmp-libffi.tar.gz
+tar -zxvf libffi.tar.gz > /dev/null
+rm libffi.tar.gz
 
 # Add libffi's to PKG_CONFIG_PATH
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$(pwd)/lib/pkgconfig/
