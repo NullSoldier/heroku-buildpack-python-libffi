@@ -10,12 +10,11 @@
 # This script is invoked by [`bin/compile`](/).
 
 # The location of the pre-compiled xmlsec1 binary.
-VENDORED_XMLSEC1="https://github.com/JohnTheodore/heroku-buildpack-python-libffi/raw/master/linux_binaries/xmlsec1-1.2.tgz"
+VENDORED_XMLSEC1="https://github.com/BetterWorks/heroku-buildpack-python-libffi/raw/master/linux_binaries/xmlsec1-1.2.tgz"
 # Syntax sugar.
 source $BIN_DIR/utils
+PREV_DIR=$(pwd)
 
-# If xmlsec exists within requirements, use vendored libmemcached.
-echo "-----> Checking for xmlsec1"
 echo "-----> Bootstrapping xmlsec1."
 cd .heroku
 if [ ! -d 'vendor' ]; then
@@ -28,12 +27,12 @@ else
   echo "-----> Did not find xmlsec1"
   # Download and extract xmlsec1 into target vendor directory.
   curl -ssl3 -L -k -o tmp-libxmlsec1.tar.gz $VENDORED_XMLSEC1
-  tar -zxvf tmp-libxmlsec1.tar.gz # > /dev/null #TODO Hide this output
+  tar -zxvf tmp-libxmlsec1.tar.gz > /dev/null
   rm tmp-libxmlsec1.tar.gz
 fi
 
 export LIBXMLSEC1=$(pwd)
 export CFLAGS="-I$(pwd)/include/xmlsec1"
 echo "-----> CFLAGS = $CFLAGS"
-cd ..
-cd ..
+
+cd "$PREV_DIR"
