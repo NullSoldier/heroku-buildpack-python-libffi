@@ -4,7 +4,7 @@
 
 # The location of the pre-compiled libffi binary.
 VENDORED_LIBFFI="https://github.com/BetterWorks/heroku-buildpack-python-libffi/raw/master/linux_binaries/libffi-3.0.tgz"
-VENDORED_PATH=/app/vendor
+VENDORED_PATH=/app/.heroku/vendor
 
 # Syntax sugar.
 source $BIN_DIR/utils
