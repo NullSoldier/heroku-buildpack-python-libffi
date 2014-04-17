@@ -31,8 +31,4 @@ else
   rm tmp-libxmlsec1.tar.gz
 fi
 
-#export LIBXMLSEC1=$(pwd)
-#export CFLAGS="-I$(pwd)/include/xmlsec1"
-#echo "-----> CFLAGS = $CFLAGS"
-
 cd "$PREV_DIR"
