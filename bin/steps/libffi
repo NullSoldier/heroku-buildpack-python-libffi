@@ -19,6 +19,12 @@ curl -ssl3 -L -k -o tmp-libffi.tar.gz $VENDORED_LIBFFI
 tar -zxvf tmp-libffi.tar.gz > /dev/null
 rm tmp-libffi.tar.gz
 
+PROFILE_SCRIPT_PATH="$BUILD_DIR/.profile.d/002_libffi.sh"
+
+echo "-----> Writing profile script to $PROFILE_SCRIPT_PATH" 
+mkdir -p $BUILD_DIR/.profile.d
+cat <<EOF >$PROFILE_SCRIPT_PATH
+
 # Add libffi's to LIBRARY_PATH
 export LIBRARY_PATH=$LIBRARY_PATH:$(pwd)/lib
 echo "LIBRARY_PATH=${LIBRARY_PATH}"
@@ -34,5 +40,10 @@ if [ -e $(pwd)/lib/pkgconfig/libffi.pc ]
 then
   echo "libffi.pc is in-place at $(pwd)/vendor/lib/pkgconfig/libffi.pc, libffi-based builds should work!"
 fi
+EOF
+
+# Run created script as a sanity check
+echo 'Running created script to ensure works'
+source $PROFILE_SCRIPT_PATH
 
 cd "$PREV_DIR"
